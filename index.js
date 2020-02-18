@@ -30,25 +30,25 @@ client.on('message', async message => {
  const serverQueue = queue.get(message.guild.id);
 
 //Команда
- if (message.content.startsWith(`.play`)) {
+ if (message.content.startsWith(`${prefix}play`)) {
  execute(message, serverQueue);
  return;
- } else if (message.content.startsWith(`.skip`)) {
+ } else if (message.content.startsWith(`${prefix}skip`)) {
  skip(message, serverQueue);
  return;
- } else if (message.content.startsWith(`.stop`)) {
+ } else if (message.content.startsWith(`${prefix}stop`)) {
  stop(message, serverQueue);       
  return;
- } else if(message.content == `.authors`){ //команда от автора
+ } else if(message.content == `${prefix}authors`){ //команда от автора
  message.reply("author: haventsound - discord: haventsound#6082")
  return;
-} else if(message.content == `.invite`){ //команда от автора
+} else if(message.content == `${prefix}invite`){ //команда от автора
     let embed = new Discord.RichEmbed()
     .setAuthor(message.guild.name, message.guild.iconURL)
     .setDescription(`[Пригласить](https://discordapp.com/oauth2/authorize?client_id=679039925605236777&permissions=8&scope=bot)`)
     message.channel.send(embed)
     return;
- } else if(message.content == `.help`){ //команда от автора
+ } else if(message.content == `${prefix}help`){ //команда от автора
     let embed2 = new Discord.RichEmbed()
     .setDescription(`**Команды бота**
     .play - Проиграть музыку.
@@ -143,4 +143,4 @@ function play(guild, song) {
  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 }
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.TOKEN);
